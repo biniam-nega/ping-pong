@@ -18,7 +18,7 @@ def draw_surface(surface, rows):
         pygame.draw.line(surface, (255, 255, 255), (0, y), (width, y))
 
 
-def get_random_pos(rows, snake, obstacle=None):
+def get_random_pos(rows, snake, obstacle=None, rand=False):
     if not obstacle:
         obstacle = list()
     while True:
@@ -26,6 +26,8 @@ def get_random_pos(rows, snake, obstacle=None):
         y = random.randrange(rows)
         if len(list(filter(lambda cube: cube.pos == (x, y), snake.body))) or \
                 len(list(filter(lambda cube: cube.pos == (x, y), obstacle))):
+            continue
+        elif rand and y == 10:
             continue
         break
     return x, y

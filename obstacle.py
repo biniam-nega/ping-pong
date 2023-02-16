@@ -1,7 +1,5 @@
-import pygame
-
-from snake2.game_functions import message_box, get_random_pos
 from snake2.cube import Cube
+from snake2.game_functions import message_box, get_random_pos
 
 
 class Obstacle:
@@ -17,10 +15,10 @@ class Obstacle:
     def init(self):
         if self.random:
             for i in range(self.rows // 2):
-                self.body.append(Cube(get_random_pos(self.rows, self.snake, self.body), self.surface, color=self.color))
-                self.body.append(Cube(get_random_pos(self.rows, self.snake, self.body), self.surface, color=self.color))
-                self.body.append(Cube(get_random_pos(self.rows, self.snake, self.body), self.surface, color=self.color))
-                self.body.append(Cube(get_random_pos(self.rows, self.snake, self.body), self.surface, color=self.color))
+                self.body.append(Cube(get_random_pos(self.rows, self.snake, self.body, rand=True), self.surface, color=self.color))
+                self.body.append(Cube(get_random_pos(self.rows, self.snake, self.body, rand=True), self.surface, color=self.color))
+                self.body.append(Cube(get_random_pos(self.rows, self.snake, self.body, rand=True), self.surface, color=self.color))
+                self.body.append(Cube(get_random_pos(self.rows, self.snake, self.body, rand=True), self.surface, color=self.color))
         else:
             for i in range(self.rows):
                 self.body.append(Cube((i, 0), self.surface, color=self.color))

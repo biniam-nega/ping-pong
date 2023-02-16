@@ -93,6 +93,7 @@ class Snake:
         head = self.head
         if len(list(filter(lambda c: c.pos == head.pos, self.body[1:]))):
             message_box('You\'ve lost!', 'Your score: ' + str(len(self.body)))
+            self.reset()
             return True
         return False
 
