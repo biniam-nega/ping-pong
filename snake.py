@@ -2,14 +2,13 @@ import pygame
 
 from snake2.cube import Cube
 from snake2.game_functions import get_random_pos, message_box
-from snake2.game_status import GameStatus
 
 
 class Snake:
     body = list()
     turns = dict()
 
-    def __init__(self, surface, color, pos, dirx=1, diry=0, rows=20):
+    def __init__(self, surface, color, pos, obstacle=None, dirx=1, diry=0, rows=20):
         self.surface = surface
         self.color = color
         self.head = Cube(pos, surface)
@@ -17,6 +16,7 @@ class Snake:
         self.rows = rows
         self.dirx = dirx
         self.diry = diry
+        self.obstacle = obstacle
 
     def move(self):
         for event in pygame.event.get():
@@ -65,7 +65,8 @@ class Snake:
     def check_snack(self, snack):
         snack = snack
         if self.head.pos == snack.pos:
-            snack = Cube(get_random_pos(self.rows, self), self.surface, color=(0, 128, 0))
+            obstacle = self.obstacle.body if self.obstacle else []
+            snack = Cube(get_random_pos(self.rows, self, obstacle), self.surface, color=(0, 128, 0))
             self.add_body()
         return snack
 

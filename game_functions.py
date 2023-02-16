@@ -18,11 +18,14 @@ def draw_surface(surface, rows):
         pygame.draw.line(surface, (255, 255, 255), (0, y), (width, y))
 
 
-def get_random_pos(rows, snake):
+def get_random_pos(rows, snake, obstacle=None):
+    if not obstacle:
+        obstacle = list()
     while True:
         x = random.randrange(rows)
         y = random.randrange(rows)
-        if len(list(filter(lambda cube: cube.pos == (x, y), snake.body))):
+        if len(list(filter(lambda cube: cube.pos == (x, y), snake.body))) or \
+                len(list(filter(lambda cube: cube.pos == (x, y), obstacle))):
             continue
         break
     return x, y
