@@ -14,8 +14,8 @@ def draw_surface(surface, rows):
     for i in range(rows):
         x += delta
         y += delta
-        pygame.draw.line(surface, (255, 255, 255), (x, 0), (x, width))
-        pygame.draw.line(surface, (255, 255, 255), (0, y), (width, y))
+        pygame.draw.line(surface, (64, 64, 64), (x, 0), (x, width))
+        pygame.draw.line(surface, (64, 64, 64), (0, y), (width, y))
 
 
 def get_random_pos(rows, snake, obstacle=None, rand=False):
